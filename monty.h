@@ -63,11 +63,16 @@ stack_t *push_stack(stack_t **stack, int n);
 void print_stack(const stack_t *stack);
 int pop_stack(stack_t **stack);
 void free_stack(stack_t **stack);
+unsigned int len_stack(stack_t *stack);
 /* !STACK */
 
 /* INSTRUCTIONS */
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
 /* !INSTRUCTIONS */
 
 #endif /* MONTY_H */

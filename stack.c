@@ -105,3 +105,29 @@ void free_stack(stack_t **stack)
 
 	*stack = NULL;
 }
+
+/**
+ * len_stack - determines the length of a stack
+ *
+ * @stack: the address of the stack
+ *
+ * Return: the length of the stack
+ */
+unsigned int len_stack(stack_t *stack)
+{
+	unsigned int len = 0;
+
+	if (stack == NULL)
+		return (0);
+
+	while (stack->prev != NULL)
+		stack = stack->prev;
+
+	while (stack != NULL)
+	{
+		len++;
+		stack = stack->next;
+	}
+
+	return (len);
+}

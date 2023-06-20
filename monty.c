@@ -4,7 +4,7 @@ void execute_instruction(
 	const instruction_t *instruction_list,
 	unsigned long size, const char *cmd,
 	stack_t **stack,
-	size_t line_number)
+	unsigned int line_number)
 {
 	unsigned int i;
 
@@ -16,7 +16,7 @@ void execute_instruction(
 			return;
 		}
 	}
-	dprintf(STDERR_FILENO, "L%lu: unknown instruction %s\n", line_number, cmd);
+	dprintf(STDERR_FILENO, "L%u: unknown instruction %s\n", line_number, cmd);
 	exit_program(EXIT_FAILURE);
 }
 
@@ -31,7 +31,7 @@ void execute_instruction(
 int main(int argc, char *argv[])
 {
 	stack_t *stack = NULL;
-	instruction_t instruction_list[2];
+	instruction_t instruction_list[6];
 	FILE *file;
 	size_t line_alloc = 0, line_number = 0;
 	ssize_t line_len;
@@ -52,6 +52,10 @@ int main(int argc, char *argv[])
 
 	ADD_INSTRUCTION(0, push);
 	ADD_INSTRUCTION(1, pall);
+	ADD_INSTRUCTION(2, pint);
+	ADD_INSTRUCTION(3, pop);
+	ADD_INSTRUCTION(4, swap);
+	ADD_INSTRUCTION(5, add);
 
 	while ((line_len = getline(&line, &line_alloc, file)))
 	{
