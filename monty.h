@@ -6,12 +6,7 @@
 #include <string.h>
 
 /* MACRO CONSTANTS */
-#define STDIN_FILENO 0
-#define STDOUT_FILENO 1
-#define STDERR_FILENO 2
-
 #define MAX_MEMORY_CAPACITY 4096
-
 #define DELIMETER (" \r\t\n")
 /* !MACRO CONSTANTS */
 

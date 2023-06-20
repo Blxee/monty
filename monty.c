@@ -16,7 +16,7 @@ void execute_instruction(
 			return;
 		}
 	}
-	dprintf(STDERR_FILENO, "L%u: unknown instruction %s\n", line_number, cmd);
+	fprintf(stderr, "L%u: unknown instruction %s\n", line_number, cmd);
 	exit_program(EXIT_FAILURE);
 }
 
@@ -39,14 +39,14 @@ int main(int argc, char *argv[])
 
 	if (argc != 2)
 	{
-		dprintf(STDERR_FILENO, "USAGE: monty file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		exit_program(EXIT_FAILURE);
 	}
 
 	file = fopen(argv[1], "r");
 	if (file == NULL)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", argv[1]);
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit_program(EXIT_FAILURE);
 	}
 

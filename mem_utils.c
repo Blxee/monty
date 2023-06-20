@@ -17,7 +17,7 @@ void *alloc_mem(unsigned long size)
 
 	if (mem == NULL)
 	{
-		dprintf(STDERR_FILENO, "Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit_program(EXIT_FAILURE);
 	}
 

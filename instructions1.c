@@ -15,7 +15,7 @@ void push(stack_t **stack, unsigned int line_number)
 
 	if (arg == NULL || arg[0] == '\0')
 	{
-		dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line_number + 1);
+		fprintf(stderr, "L%u: usage: push integer\n", line_number + 1);
 		exit_program(EXIT_FAILURE);
 	}
 
@@ -23,7 +23,7 @@ void push(stack_t **stack, unsigned int line_number)
 		if (!(('0' <= arg[i] && arg[i] <= '9')
 					|| (i == 0 && arg[i] == '-')))
 		{
-			dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line_number + 1);
+			fprintf(stderr, "L%u: usage: push integer\n", line_number + 1);
 			exit_program(EXIT_FAILURE);
 		}
 
@@ -52,7 +52,7 @@ void pint(stack_t **stack, unsigned int line_number)
 {
 	if (stack == NULL || *stack == NULL)
 	{
-		dprintf(STDERR_FILENO, "L%u: can't pint, stack empty\n", line_number + 1);
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number + 1);
 		exit_program(EXIT_FAILURE);
 	}
 
@@ -69,7 +69,7 @@ void pop(stack_t **stack, unsigned int line_number)
 {
 	if (stack == NULL || *stack == NULL)
 	{
-		dprintf(STDERR_FILENO, "L%u: can't pop an empty stack\n", line_number + 1);
+		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number + 1);
 		exit_program(EXIT_FAILURE);
 	}
 
@@ -88,7 +88,7 @@ void swap(stack_t **stack, unsigned int line_number)
 
 	if (stack == NULL || *stack == NULL || len_stack(*stack) < 2)
 	{
-		dprintf(STDERR_FILENO,
+		fprintf(stderr,
 			"L%u: can't swap, stack too short\n", line_number + 1);
 		exit_program(EXIT_FAILURE);
 	}
