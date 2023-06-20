@@ -3,12 +3,23 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
+/* MACRO CONSTANTS */
 #define STDIN_FILENO 0
 #define STDOUT_FILENO 1
 #define STDERR_FILENO 2
 
 #define MAX_MEMORY_CAPACITY 4096
+
+#define DELIMETER (" \r\t\n")
+/* !MACRO CONSTANTS */
+
+/* MACRO FUNCTIONS */
+#define ADD_INSTRUCTION(index, name) \
+instruction_list[index].opcode = #name; \
+instruction_list[index].f = name
+/* !MACRO FUNCTIONS */
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -53,5 +64,10 @@ void print_stack(const stack_t *stack);
 int pop_stack(stack_t **stack);
 void free_stack(stack_t **stack);
 /* !STACK */
+
+/* INSTRUCTIONS */
+void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
+/* !INSTRUCTIONS */
 
 #endif /* MONTY_H */
