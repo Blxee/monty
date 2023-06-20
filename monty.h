@@ -2,8 +2,11 @@
 #define MONTY_H
 
 #include <stdlib.h>
-#include <unistd.h>
 #include <stdio.h>
+
+#define STDIN_FILENO 0
+#define STDOUT_FILENO 1
+#define STDERR_FILENO 2
 
 #define MAX_MEMORY_CAPACITY 4096
 
@@ -43,5 +46,12 @@ int is_allocated(const void *mem);
 void free_mem(void *mem);
 void exit_program(int code);
 /* !MEM_UTILS */
+
+/* STACK */
+stack_t *push_stack(stack_t **stack, int n);
+void print_stack(const stack_t *stack);
+int pop_stack(stack_t **stack);
+void free_stack(stack_t **stack);
+/* !STACK */
 
 #endif /* MONTY_H */

@@ -16,5 +16,6 @@ int main(int argc, char *argv[])
 		exit_program(EXIT_FAILURE);
 	}
 
+	(void)argv;
 	exit_program(EXIT_SUCCESS);
 }

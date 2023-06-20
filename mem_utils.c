@@ -1,7 +1,7 @@
 #include "monty.h"
 
 static void *g_memarray[MAX_MEMORY_CAPACITY];
-static unsigned int g_memlen;
+static int g_memlen;
 
 /**
  * alloc_mem - allicates memory on the heap and kerps track of it
