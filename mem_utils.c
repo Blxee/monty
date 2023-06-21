@@ -50,6 +50,29 @@ int is_allocated(const void *mem)
 }
 
 /**
+ * add_allocated - adds an address to be tracked
+ *
+ * @mem: address of the memory
+ */
+void add_allocated(void *mem)
+{
+	int i, pos = -1;
+
+	for (i = 0; i < g_memlen; i++)
+	{
+		if (g_memarray[i] == mem)
+			return;
+		if (g_memarray[i] == NULL)
+			pos = i;
+	}
+
+	if (pos != -1)
+		g_memarray[pos] = mem;
+	else
+		g_memarray[g_memlen++] = mem;
+}
+
+/**
  * free_mem - frees a memory address from the heap only it's if not freed yet
  *
  * @mem: the address to frer

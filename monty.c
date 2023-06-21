@@ -1,6 +1,15 @@
 #define _GNU_SOURCE
 #include "monty.h"
 
+/**
+ * execute_instruction - executes an instruction
+ *
+ * @instruction_list: list of available instructions
+ * @size: size of instruction list
+ * @cmd: the command from the user
+ * @stack: the main stack
+ * @line_number: number of current line
+ */
 void execute_instruction(
 	const instruction_t *instruction_list,
 	unsigned long size, const char *cmd,
@@ -51,12 +60,9 @@ int main(int argc, char *argv[])
 		exit_program(EXIT_FAILURE);
 	}
 
-	ADD_INSTRUCTION(0, push);
-	ADD_INSTRUCTION(1, pall);
-	ADD_INSTRUCTION(2, pint);
-	ADD_INSTRUCTION(3, pop);
-	ADD_INSTRUCTION(4, swap);
-	ADD_INSTRUCTION(5, add);
+	ADD_INSTRUCTION(0, push), ADD_INSTRUCTION(1, pall);
+	ADD_INSTRUCTION(2, pint), ADD_INSTRUCTION(3, pop);
+	ADD_INSTRUCTION(4, swap), ADD_INSTRUCTION(5, add);
 
 	while ((line_len = getline(&line, &line_alloc, file)))
 	{

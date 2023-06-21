@@ -50,6 +50,7 @@ typedef struct instruction_s
 /* MEM_UTILS */
 void *alloc_mem(unsigned long size);
 int is_allocated(const void *mem);
+void add_allocated(void *mem);
 void free_mem(void *mem);
 void exit_program(int code);
 /* !MEM_UTILS */
