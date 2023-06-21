@@ -31,6 +31,34 @@ void execute_instruction(
 }
 
 /**
+ * fill_instructions - fills all available instructions
+ *
+ * @list: the instruction array
+ */
+void fill_instructions(instruction_t list[])
+{
+	char *names[] = {
+		"push", "pall", "pint",
+		"pop", "swap", "add",
+		"nop", "sub", "div",
+		"mul", "mod"
+	};
+	void (*funcs[])(stack_t **, unsigned int) = {
+		push, pall, pint,
+		pop, swap, add,
+		nop, sub, _div,
+		mul, mod
+	};
+	unsigned int i;
+
+	for (i = 0; i < sizeof(names) / sizeof(*names); i++)
+	{
+		list[i].opcode = names[i];
+		list[i].f = funcs[i];
+	}
+}
+
+/**
  * main - entry point of the program
  *
  * @argc: argument count
@@ -41,7 +69,7 @@ void execute_instruction(
 int main(int argc, char *argv[])
 {
 	stack_t *stack = NULL;
-	instruction_t instruction_list[7];
+	instruction_t instruction_list[11];
 	FILE *file;
 	size_t line_alloc = 0, line_number = 0;
 	ssize_t line_len;
@@ -60,9 +88,7 @@ int main(int argc, char *argv[])
 		exit_program(EXIT_FAILURE);
 	}
 
-	ADD_INSTRUCTION(0, push), ADD_INSTRUCTION(1, pall);
-	ADD_INSTRUCTION(2, pint), ADD_INSTRUCTION(3, pop);
-	ADD_INSTRUCTION(4, swap), ADD_INSTRUCTION(5, add), ADD_INSTRUCTION(6, nop);
+	fill_instructions(instruction_list);
 
 	while ((line_len = getline(&line, &line_alloc, file)) != -1)
 	{
