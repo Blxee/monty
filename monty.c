@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
 		exit_program(EXIT_FAILURE);
 	}
 
-	file = fopen(argv[1], "r");
+	*get_inp_file() = file = fopen(argv[1], "r");
 	if (file == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
@@ -67,6 +67,7 @@ int main(int argc, char *argv[])
 	while ((line_len = getline(&line, &line_alloc, file)))
 	{
 		line_number++;
+		*get_inp_line() = line;
 		cmd = strtok(line, DELIMETER);
 		if (cmd)
 			execute_instruction(instruction_list,

@@ -72,4 +72,9 @@ void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 /* !INSTRUCTIONS */
 
+/* GLOBALS */
+FILE **get_inp_file(void);
+char **get_inp_line(void);
+/* !GLOBALS */
+
 #endif /* MONTY_H */

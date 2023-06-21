@@ -105,5 +105,11 @@ void exit_program(int code)
 		}
 	g_memlen = 0;
 
+	if (*get_inp_file())
+		fclose(*get_inp_file());
+
+	if (*get_inp_line())
+		free(*get_inp_line());
+
 	exit(code);
 }
