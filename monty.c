@@ -41,7 +41,7 @@ void execute_instruction(
 int main(int argc, char *argv[])
 {
 	stack_t *stack = NULL;
-	instruction_t instruction_list[6];
+	instruction_t instruction_list[7];
 	FILE *file;
 	size_t line_alloc = 0, line_number = 0;
 	ssize_t line_len;
