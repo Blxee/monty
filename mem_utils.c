@@ -21,12 +21,12 @@ void *alloc_mem(unsigned long size)
 		exit_program(EXIT_FAILURE);
 	}
 
-	i = is_allocated(NULL);
-	if (i != -1)
-		g_memarray[i] = mem;
+	for (i = 0; i < g_memlen; i++)
+		if (g_memarray[i] == NULL)
+			g_memarray[i] = mem;
 
-	if (i >= g_memlen)
-		g_memlen = i + 1;
+	if (i == g_memlen)
+		g_memarray[g_memlen++] = mem;
 
 	return (mem);
 }
