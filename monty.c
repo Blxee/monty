@@ -62,7 +62,7 @@ int main(int argc, char *argv[])
 
 	ADD_INSTRUCTION(0, push), ADD_INSTRUCTION(1, pall);
 	ADD_INSTRUCTION(2, pint), ADD_INSTRUCTION(3, pop);
-	ADD_INSTRUCTION(4, swap), ADD_INSTRUCTION(5, add), ADD_INSTRUCTION(5, nop);
+	ADD_INSTRUCTION(4, swap), ADD_INSTRUCTION(5, add), ADD_INSTRUCTION(6, nop);
 
 	while ((line_len = getline(&line, &line_alloc, file)) != -1)
 	{
