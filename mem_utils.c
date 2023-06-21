@@ -13,7 +13,6 @@ static int g_memlen;
 void *alloc_mem(unsigned long size)
 {
 	void *mem = malloc(size);
-	int i;
 
 	if (mem == NULL)
 	{
@@ -21,12 +20,7 @@ void *alloc_mem(unsigned long size)
 		exit_program(EXIT_FAILURE);
 	}
 
-	for (i = 0; i < g_memlen; i++)
-		if (g_memarray[i] == NULL)
-			g_memarray[i] = mem;
-
-	if (i == g_memlen)
-		g_memarray[g_memlen++] = mem;
+	g_memarray[g_memlen++] = mem;
 
 	return (mem);
 }
