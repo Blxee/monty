@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
 	ADD_INSTRUCTION(2, pint), ADD_INSTRUCTION(3, pop);
 	ADD_INSTRUCTION(4, swap), ADD_INSTRUCTION(5, add);
 
-	while ((line_len = getline(&line, &line_alloc, file)))
+	while ((line_len = getline(&line, &line_alloc, file)) != -1)
 	{
 		line_number++;
 		*get_inp_line() = line;
