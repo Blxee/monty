@@ -22,3 +22,15 @@ void add(stack_t **stack, unsigned int line_number)
 
 	push_stack(stack, first + second);
 }
+
+/**
+ * nop - the "nop" instruction implementation
+ *
+ * @stack: the main stack to operate on
+ * @line_number: line number of the current instruction
+ */
+void nop(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)line_number;
+}
