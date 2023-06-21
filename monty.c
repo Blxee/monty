@@ -75,8 +75,6 @@ int main(int argc, char *argv[])
 				cmd, &stack, line_number);
 	}
 
-	free(line);
-	fclose(file);
 	exit_program(EXIT_SUCCESS);
 	return (0);
 }
