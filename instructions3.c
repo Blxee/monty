@@ -20,5 +20,12 @@ void mod(stack_t **stack, unsigned int line_number)
 	first = pop_stack(stack);
 	second = pop_stack(stack);
 
+	if (first == 0)
+	{
+		fprintf(stderr,
+			"L%u: division by zero\n", line_number);
+		exit_program(EXIT_FAILURE);
+	}
+
 	push_stack(stack, second % first);
 }
