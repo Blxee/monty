@@ -4,7 +4,7 @@ static void *g_memarray[MAX_MEMORY_CAPACITY];
 static int g_memlen;
 
 /**
- * alloc_mem - allicates memory on the heap and kerps track of it
+ * alloc_mem - allocates memory on the heap and kerps track of it
  *
  * @size: the amount of bytes to allocate
  *
