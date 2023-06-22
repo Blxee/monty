@@ -97,3 +97,69 @@ void pstr(stack_t **stack, unsigned int line_number)
 	printf("%s\n", str);
 	free_mem(str);
 }
+
+/**
+ * rotl - the "rotl" instruction implementation
+ *
+ * @stack: the main stack to operate on
+ * @line_number: line number of the current instruction
+ */
+void rotl(stack_t **stack, unsigned int line_number)
+{
+	stack_t *head, *sec_head, *tail;
+
+	(void)line_number;
+
+	if (stack == NULL || *stack == NULL || len_stack(*stack) == 1)
+		return;
+
+	head = *stack;
+	while (head->prev != NULL)
+		head = head->prev;
+
+	sec_head = head->next;
+
+	tail = *stack;
+	while (tail->next != NULL)
+		tail = tail->next;
+
+	head->prev = tail;
+	head->next = NULL;
+	sec_head->prev = NULL;
+	tail->next = head;
+
+	*stack = sec_head;
+}
+
+/**
+ * rotr - the "rotr" instruction implementation
+ *
+ * @stack: the main stack to operate on
+ * @line_number: line number of the current instruction
+ */
+void rotr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *head, *sec_tail, *tail;
+
+	(void)line_number;
+
+	if (stack == NULL || *stack == NULL || len_stack(*stack) == 1)
+		return;
+
+	tail = *stack;
+	while (tail->next != NULL)
+		tail = tail->next;
+
+	sec_tail = tail->prev;
+
+	head = *stack;
+	while (head->prev != NULL)
+		head = head->prev;
+
+	tail->prev = NULL;
+	tail->next = head;
+	sec_tail->next = NULL;
+	head->prev = tail;
+
+	*stack = tail;
+}

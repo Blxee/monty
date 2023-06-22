@@ -42,14 +42,14 @@ void fill_instructions(instruction_t list[])
 		"pop", "swap", "add",
 		"nop", "sub", "div",
 		"mul", "mod", "pchar",
-		"pstr"
+		"pstr", "rotl", "rotr",
 	};
 	void (*funcs[])(stack_t **, unsigned int) = {
 		push, pall, pint,
 		pop, swap, add,
 		nop, sub, _div,
 		mul, mod, pchar,
-		pstr
+		pstr, rotl, rotr,
 	};
 	unsigned int i;
 
@@ -71,7 +71,7 @@ void fill_instructions(instruction_t list[])
 int main(int argc, char *argv[])
 {
 	stack_t *stack = NULL;
-	instruction_t instruction_list[13];
+	instruction_t instruction_list[15];
 	FILE *file;
 	size_t line_alloc = 0, line_number = 0;
 	ssize_t line_len;
