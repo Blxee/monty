@@ -1,6 +1,37 @@
 #include "monty.h"
 
 /**
+ * queue_stack - queues an element at the top of the stack
+ *
+ * @stack: the address of the stack
+ * @n: the new element
+ *
+ * Return: the address of the new node
+ */
+stack_t *queue_stack(stack_t **stack, int n)
+{
+	stack_t *new, *prev = NULL;
+
+	if (stack == NULL)
+		return (NULL);
+
+	while (*stack != NULL)
+	{
+		prev = *stack;
+		stack = &(*stack)->next;
+	}
+
+	new = alloc_mem(sizeof(stack_t));
+	new->n = n;
+	new->prev = prev;
+	new->next = NULL;
+
+	*stack = new;
+
+	return (new);
+}
+
+/**
  * unqueue_stack - removes the element at the bottom of the queue
  *
  * @stack: the address of the stack

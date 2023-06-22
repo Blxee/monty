@@ -27,7 +27,15 @@ void push(stack_t **stack, unsigned int line_number)
 			exit_program(EXIT_FAILURE);
 		}
 
-	push_stack(stack, atoi(arg));
+	switch (g_mode)
+	{
+	case STACK:
+		push_stack(stack, atoi(arg));
+		break;
+	case QUEUE:
+		queue_stack(stack, atoi(arg));
+		break;
+	}
 }
 
 /**
