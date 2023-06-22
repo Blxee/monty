@@ -41,6 +41,21 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+ * enum data_mode_s - specifies whether a queue or stack should be used
+ * @STACK: use the stack data structure mode
+ * @QUEUE: use the queue data structure mode
+ */
+typedef enum data_mode_s
+{
+	STACK,
+	QUEUE
+} data_mode_t;
+
+/* GLOBAL VARIABLES */
+extern data_mode_t g_mode;
+/* !GLOBAL VARIABLES */
+
 /* MEM_UTILS */
 void *alloc_mem(unsigned long size);
 int is_allocated(const void *mem);
@@ -55,6 +70,7 @@ void print_stack(const stack_t *stack);
 int pop_stack(stack_t **stack);
 void free_stack(stack_t **stack);
 unsigned int len_stack(stack_t *stack);
+int unqueue_stack(stack_t **stack);
 /* !STACK */
 
 /* INSTRUCTIONS */
@@ -73,6 +89,8 @@ void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
 void rotl(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
+void stack(stack_t **stack, unsigned int line_number);
+void queue(stack_t **stack, unsigned int line_number);
 /* !INSTRUCTIONS */
 
 /* GLOBALS */

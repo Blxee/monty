@@ -1,6 +1,8 @@
 #define _GNU_SOURCE
 #include "monty.h"
 
+data_mode_t g_mode = STACK;
+
 /**
  * execute_instruction - executes an instruction
  *
@@ -43,6 +45,7 @@ void fill_instructions(instruction_t list[])
 		"nop", "sub", "div",
 		"mul", "mod", "pchar",
 		"pstr", "rotl", "rotr",
+		"stack", "queue"
 	};
 	void (*funcs[])(stack_t **, unsigned int) = {
 		push, pall, pint,
@@ -50,6 +53,7 @@ void fill_instructions(instruction_t list[])
 		nop, sub, _div,
 		mul, mod, pchar,
 		pstr, rotl, rotr,
+		stack, queue
 	};
 	unsigned int i;
 
@@ -71,7 +75,7 @@ void fill_instructions(instruction_t list[])
 int main(int argc, char *argv[])
 {
 	stack_t *stack = NULL;
-	instruction_t instruction_list[15];
+	instruction_t instruction_list[17];
 	FILE *file;
 	size_t line_alloc = 0, line_number = 0;
 	ssize_t line_len;

@@ -73,7 +73,15 @@ void pop(stack_t **stack, unsigned int line_number)
 		exit_program(EXIT_FAILURE);
 	}
 
-	pop_stack(stack);
+	switch (g_mode)
+	{
+	case STACK:
+		pop_stack(stack);
+		break;
+	case QUEUE:
+		unqueue_stack(stack);
+		break;
+	}
 }
 
 /**
