@@ -95,6 +95,8 @@ int main(int argc, char *argv[])
 		line_number++;
 		*get_inp_line() = line;
 		cmd = strtok(line, DELIMETER);
+		if (cmd && cmd[0] == '#')
+			continue;
 		if (cmd)
 			execute_instruction(instruction_list,
 				sizeof(instruction_list) / sizeof(instruction_t),
