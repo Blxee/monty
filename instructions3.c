@@ -57,3 +57,43 @@ void pchar(stack_t **stack, unsigned int line_number)
 
 	printf("%c\n", n);
 }
+
+/**
+ * pstr - the "pstr" instruction implementation
+ *
+ * @stack: the main stack to operate on
+ * @line_number: line number of the current instruction
+ */
+void pstr(stack_t **stack, unsigned int line_number)
+{
+	char *str;
+	unsigned int i = 0, len = 0;
+	stack_t *node;
+
+	(void)line_number;
+
+	if (stack == NULL || *stack == NULL)
+	{
+		printf("\n");
+		return;
+	}
+
+	len = len_stack(*stack);
+	str = alloc_mem(len + 1);
+
+	node = *stack;
+	while (node->prev != NULL)
+		node = node->prev;
+
+	while (node)
+	{
+		if (node->n <= 0 || node->n > 127)
+			break;
+		str[i++] = node->n;
+		node = node->next;
+	}
+	str[i] = '\0';
+
+	printf("%s\n", str);
+	free_mem(str);
+}
