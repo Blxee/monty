@@ -3,24 +3,22 @@ alx Monty project repo
 ## Usage:
 
 1. #### compile:
-
-  ```./compile.sh```
-
+  ```
+  ./compile.sh
+  ```
   > This will produce a `monty` executable, which then you can by:
 
 2. #### run:
-
-  ```monty <input file>```
-
+  ```
+  monty <input file>
+  ```
   > Note:  
 the program executes line by line,
 so even if the input file does not contain valid monty code,
 it will still run until it reaches an line with an error.
 
 3. #### the monty file:
-
   ##### opcodes:
-
   |opcode|description|
   |------|-----------|
   |`push` <int>|pushes a new element at the top|
